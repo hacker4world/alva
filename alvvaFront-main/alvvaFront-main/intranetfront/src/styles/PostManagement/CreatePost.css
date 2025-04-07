@@ -1,0 +1,221 @@
+/* Base styles for the post container */
+.post-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 12px 16px;
+  }
+  
+  /* Styles for the trigger button that opens the modal */
+  .post-prompt {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: #f0f2f5;
+    transition: background 0.2s;
+  }
+  
+  .post-prompt:hover {
+    background: #e4e6e9;
+  }
+  
+  .user-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  .post-input-trigger {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: none;
+    background: #f0f2f5;
+    font-size: 16px;
+    cursor: pointer;
+    color: #65676b;
+  }
+  
+  /* Modal overlay styles */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .create-post-modal {
+    background: white;
+    width: 500px;
+    max-width: 90%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #65676b;
+  }
+  
+  /* User info section styles */
+  .user-info {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  .user-info h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .privacy-option {
+    font-size: 13px;
+    color: #65676b;
+  }
+  
+  /* Form input styles */
+  .post-form {
+    padding: 0 16px 16px;
+  }
+  
+  .post-content-input {
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    padding: 16px 0;
+    resize: none;
+    min-height: 100px;
+  }
+  
+  .post-title-input,
+  .post-desc-input,
+  .category-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 8px 0;
+    font-size: 15px;
+  }
+  
+  /* Attachment styles */
+  .attachment-options {
+    padding: 12px 0;
+    border-top: 1px solid #ddd;
+    margin-top: 12px;
+  }
+  
+  .attachment-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    color: #65676b;
+  }
+  
+  .attachment-label:hover {
+    background: #f0f2f5;
+  }
+  
+  .file-input {
+    display: none;
+  }
+  
+  .attachment-icon {
+    font-size: 18px;
+  }
+  
+  .file-name {
+    font-size: 12px;
+    color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 150px;
+  }
+  
+ 
+  .post-submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 12px;
+  }
+  
+  .post-submit-btn:hover {
+    background: #166fe5;
+  }
+  
+  /* Error message styles */
+  .error {
+    color: #ff3333;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .post-submit-btn {
+    background: #1890ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+  }
+  
+  .post-submit-btn:hover {
+    background: #40a9ff;
+  }
+  
+  .post-submit-btn:disabled {
+    background: #d9d9d9;
+    cursor: not-allowed;
+  }

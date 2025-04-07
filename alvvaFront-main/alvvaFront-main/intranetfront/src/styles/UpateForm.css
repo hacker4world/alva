@@ -1,0 +1,119 @@
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.ss {
+  width: auto;
+  height: auto;
+  margin: auto;
+}
+.b {
+  display: flex;
+}
+
+.containe {
+  max-width: 450px;
+  background: #f8f9fd;
+  border-radius: 40px;
+
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 20px;
+  border: 5px solid #fff;
+  box-shadow: #aa9ff0(133, 189, 215, 0.88) 0px 30px 30px -20px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.heading {
+  font-weight: 900;
+  font-size: 26px; /* Slightly reduced font size */
+  color: #6a5acd;
+}
+
+.form {
+  margin-top: 15px; /* Reduced margin-top */
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Reduced gap between form elements */
+}
+
+.input,
+select {
+  width: 100%;
+  background: white;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 20px;
+  box-shadow: #cff0ff 0px 10px 10px -5px;
+  border-inline: 2px solid transparent;
+}
+
+.input::placeholder {
+  color: rgb(170, 170, 170);
+}
+
+.input:focus,
+select:focus {
+  outline: none;
+  border-inline: 2px solid #6a5acd;
+}
+
+.login-button {
+  width: 100%;
+  font-weight: bold;
+  background: linear-gradient(45deg, #5b4bbe 0%, #6a5acd 100%);
+  color: white;
+  padding: 12px; /* Reduced padding */
+  border-radius: 20px;
+  border: none;
+  box-shadow: #9387de 0px 20px 10px -15px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  transform: scale(1.03);
+}
+
+.login-button:active {
+  transform: scale(0.95);
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  text-align: left;
+}
+
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 95%;
+    padding: 15px;
+  }
+  .heading {
+    font-size: 22px; /* Slightly reduced font size for small screens */
+  }
+  .input,
+  select {
+    padding: 10px; /* Reduced padding for smaller screens */
+  }
+  .login-button {
+    padding: 10px; /* Reduced button padding */
+  }
+}

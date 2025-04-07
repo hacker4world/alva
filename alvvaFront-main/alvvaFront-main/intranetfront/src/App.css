@@ -1,0 +1,16 @@
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    margin-top: 60px; /* Pour éviter le chevauchement avec la Navbar */
+    margin-left: 250px;
+    transition: margin-left 0.3s;
+}
+
+.sidebar.closed + .content {
+    margin-left: 70px;
+}

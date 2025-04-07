@@ -1,0 +1,73 @@
+.container {
+  max-width: 1000px;
+  background: #F8F9FD;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: rgba(133, 189, 215, 0.5) 0px 20px 20px -10px;
+  margin: 20px auto;
+}
+
+.heading {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(16, 137, 211);
+  margin-bottom: 20px;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: rgba(133, 189, 215, 0.5) 0px 10px 15px -5px;
+}
+.ss{
+  width: auto;
+  height: auto;
+  margin: auto;
+
+}
+
+.styled-table th, .styled-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.styled-table th {
+  background: linear-gradient(45deg, #5b4bbe 0%, #6a5acd 100%);
+  color: white;
+}
+
+.styled-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.action-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.activate {
+  background-color: #12B1D1;
+  color: white;
+}
+
+.reject {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.action-button:hover {
+  transform: scale(1.05);
+}
+
+.action-button:active {
+  transform: scale(0.95);
+}

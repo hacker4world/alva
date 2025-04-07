@@ -1,0 +1,211 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+.ss {
+  width: auto;
+  height: auto;
+  margin: auto;
+}
+
+.container {
+  max-width: 400px;
+  background: #f8f9fd;
+  border-radius: 40px;
+  padding: 25px 35px;
+  border: 5px solid #fff;
+  box-shadow: #99d3ec(133, 189, 215, 0.88) 0px 30px 30px -20px;
+  margin: auto;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.heading {
+  font-weight: 900;
+  font-size: 30px;
+  color: #0074e4;
+}
+
+.form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.input,
+select {
+  width: 100%;
+  background: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 20px;
+  box-shadow: #cff0ff 0px 10px 10px -5px;
+  border-inline: 2px solid transparent;
+}
+
+.input::placeholder {
+  color: rgb(170, 170, 170);
+}
+
+.input:focus,
+select:focus {
+  outline: none;
+  border-inline: 2px solid #0074e4;
+}
+
+.login-button {
+  width: 100%;
+  font-weight: bold;
+  background: linear-gradient(45deg, #0074e4 0%, #004560 100%);
+  color: white;
+  padding: 15px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: #79a7d2 0px 20px 10px -15px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  transform: scale(1.03);
+}
+
+.login-button:active {
+  transform: scale(0.95);
+}
+
+.error {
+  color: rgb(255, 21, 0);
+  font-size: 12px;
+  text-align: left;
+}
+
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 95%;
+    padding: 15px;
+  }
+  .heading {
+    font-size: 24px;
+  }
+  .input,
+  select {
+    padding: 12px;
+  }
+  .login-button {
+    padding: 12px;
+  }
+}
+ .forgot-password {
+    text-align: right;
+    font-size: 0.9rem;
+  }
+  
+  .forgot-password a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .forgot-password a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Login button */
+  .submit-button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Step Indicator */
+.step-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .step {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .step.active {
+    background-color: #007bff;
+  }
+
+  .password-checklist {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .password-requirement {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  .password-requirement.validated {
+    color: #888;
+  }
+  
+  .password-requirement .checkmark {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .password-requirement.validated .checkmark {
+    color: green;
+  }
+  
+  .password-requirement:not(.validated) .checkmark {
+    color: red;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+  }
+  
+  .success-message {
+    color: green;
+    font-size: 1em;
+    margin-bottom: 10px;
+  }
+  
+  .login-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }

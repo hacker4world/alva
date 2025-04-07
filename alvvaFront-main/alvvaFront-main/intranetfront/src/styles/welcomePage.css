@@ -1,0 +1,54 @@
+/* General styles */
+.welcome-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  .welcome-container {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Slogan section */
+  .slogan-section {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .slogan-section h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .slogan-section p {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  
+  
+  .toggle-text {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .toggle-link {
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .toggle-link:hover {
+    color: #0056b3;
+  }
+  
