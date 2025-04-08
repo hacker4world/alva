@@ -200,6 +200,7 @@ public class PostService {
             List<CommentResponseDto> commentsResponse = new ArrayList<>();
 
             post.getComments().forEach(comment -> {
+
                 commentsResponse.add(new CommentResponseDto(comment.getId(), comment.getContent(), comment.getCreatedAt(), comment.getUser().getFirstName()));
             });
 

@@ -1,16 +1,16 @@
 package com.example.alvaBackend.Dto;
 
 public class ReplyDTO {
-    private int parentCommentId;
+    private int commentId;
     private int userId;
     private String content;
 
     public int getParentCommentId() {
-        return parentCommentId;
+        return commentId;
     }
 
     public void setParentCommentId(int parentCommentId) {
-        this.parentCommentId = parentCommentId;
+        this.commentId = parentCommentId;
     }
 
     public int getUserId() {

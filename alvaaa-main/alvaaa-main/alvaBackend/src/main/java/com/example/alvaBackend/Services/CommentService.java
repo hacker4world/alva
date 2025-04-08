@@ -2,10 +2,14 @@ package com.example.alvaBackend.Services;
 
 import com.example.alvaBackend.Dto.CommentDTO;
 
+import com.example.alvaBackend.Dto.CommentReplyResponseDto;
+import com.example.alvaBackend.Dto.CommentResponseDto;
 import com.example.alvaBackend.Dto.ReplyDTO;
 import com.example.alvaBackend.Entities.Comment;
+import com.example.alvaBackend.Entities.CommentReply;
 import com.example.alvaBackend.Entities.Post;
 import com.example.alvaBackend.Entities.User;
+import com.example.alvaBackend.Repositories.CommentReplyRepository;
 import com.example.alvaBackend.Repositories.CommentRepository;
 import com.example.alvaBackend.Repositories.PostRepository;
 import com.example.alvaBackend.Repositories.userRepository;
@@ -22,14 +26,16 @@ public class CommentService {
 private final PostRepository postRepository;
 private final CommentRepository commentRepository;
 private final userRepository userRepository;
+    private final CommentReplyRepository commentReplyRepository;
 
 
     public CommentService(CommentRepository commentRepository,
                           PostRepository postRepository,
-                          userRepository userRepository) {
+                          userRepository userRepository, CommentReplyRepository commentReplyRepository) {
         this.commentRepository = commentRepository;
         this.postRepository = postRepository;
         this.userRepository = userRepository;
+        this.commentReplyRepository = commentReplyRepository;
     }
 
     public ResponseEntity<Object> createComment(CommentDTO commentRequest) {
@@ -62,8 +68,6 @@ private final userRepository userRepository;
         if (existingComment.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Comment not found");
         }
-
-
 
         Comment commentToUpdate = existingComment.get();
         commentToUpdate.setContent(commentRequest.getContent());
@@ -102,27 +106,40 @@ private final userRepository userRepository;
         }
 
         // 3. Créer la réponse
-        Comment reply = new Comment();
+        CommentReply reply = new CommentReply();
         reply.setContent(replyDTO.getContent());
         reply.setUser(userOpt.get());
-        reply.setPost(parentCommentOpt.get().getPost()); // Même post que le parent
-        reply.setParentComment(parentCommentOpt.get());
+        reply.setComment(parentCommentOpt.get());
+
+        CommentReplyResponseDto replyResponseDto = new CommentReplyResponseDto(
+                reply.getId(),
+                parentCommentOpt.get().getId(),
+                reply.getContent()
+        );
 
         // 4. Sauvegarder
-        Comment savedReply = commentRepository.save(reply);
+        commentReplyRepository.save(reply);
 
-        // 5. Optionnel: ajouter la réponse à la liste du parent
-        parentCommentOpt.get().getReplies().add(savedReply);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedReply);
+        return ResponseEntity.status(HttpStatus.CREATED).body(replyResponseDto);
     }
 
     public ResponseEntity<?> getReplies(int parentCommentId) {
-        if (!commentRepository.existsById(parentCommentId)) {
+        Optional<Comment> parentCommentOpt = commentRepository.findById(parentCommentId);
+        if (parentCommentOpt.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parent comment not found");
         }
 
-        List<Comment> replies = commentRepository.findByParentCommentId(parentCommentId);
-        return ResponseEntity.ok(replies);
+       List<CommentReply> replies = commentReplyRepository.findByComment(parentCommentOpt.get());
+
+        List<CommentReplyResponseDto> replyResponseDtos = replies.stream()
+                .map(reply -> new CommentReplyResponseDto(
+                        reply.getId(),
+                        reply.getComment().getId(),
+                        reply.getContent()
+                ))
+                .toList();
+
+
+        return ResponseEntity.ok(replyResponseDtos);
     }
 }

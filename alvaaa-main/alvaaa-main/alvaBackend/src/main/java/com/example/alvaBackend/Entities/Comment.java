@@ -24,13 +24,12 @@ public class Comment {
     @JoinColumn(name = "post_id", referencedColumnName = "pub_id")
     private Post post;
 
-
     @ManyToOne
     @JoinColumn(name = "parent_comment_id")
     private Comment parentComment;
 
-    @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL)
-    private List<Comment> replies = new ArrayList<>();
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
+    private List<CommentReply> replies = new ArrayList<>();
 
     @PrePersist
     protected void onCreate() {
@@ -53,11 +52,11 @@ public class Comment {
         this.parentComment = parentComment;
     }
 
-    public List<Comment> getReplies() {
+    public List<CommentReply> getReplies() {
         return replies;
     }
 
-    public void setReplies(List<Comment> replies) {
+    public void setReplies(List<CommentReply> replies) {
         this.replies = replies;
     }
 
