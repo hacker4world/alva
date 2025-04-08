@@ -12,6 +12,8 @@ const PostsByDepartment = () => {
   const [departmentName, setDepartmentName] = useState("");
   const [menuOpen, setMenuOpen] = useState(null); // Gérer le menu contextuel
   const [commentInput, setCommentInput] = useState(""); // Gérer
+  const [commentReplies, setCommentReplies] = useState([]);
+  const [replyInput, setReplyInput] = useState("");
 
   const apiUrl = import.meta.env.VITE_API_URL;
   const userId = sessionStorage.getItem("userId");
@@ -111,6 +113,27 @@ const PostsByDepartment = () => {
         <div className="spinner"></div>
       </div>
     );
+
+  const fetchReplies = (commentId) => {
+    axios
+      .get(`${apiUrl}/api/comments/${commentId}/replies`)
+      .then((response) => {
+        setCommentReplies((old) => [...old, ...response.data]);
+        console.log(response.data);
+      });
+  };
+
+  const replyToComment = (commentId) => {
+    const data = {
+      parentCommentId: commentId,
+      userId: Number(sessionStorage.getItem("userId")),
+      content: replyInput,
+    };
+
+    axios.post(`${apiUrl}/api/comments/reply`, data).then((response) => {
+      setCommentReplies((old) => [...old, response.data]);
+    });
+  };
 
   if (error) return <p className="error-message">{error}</p>;
 
@@ -222,8 +245,41 @@ const PostsByDepartment = () => {
 
                 <div className="comment-section">
                   {post.comments.map((comment) => (
-                    <p>{comment.content}</p>
+                    <div>
+                      <p>{comment.content}</p>
+                      <form
+                        style={{ width: "100%" }}
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          replyToComment(comment.id);
+                        }}
+                      >
+                        <input
+                          onChange={(e) => {
+                            setReplyInput(e.target.value);
+                          }}
+                          style={{ width: "95%" }}
+                          type="text"
+                          placeholder="Écrire une response..."
+                          className="comment-input"
+                        />
+                      </form>
+                      <br />
+                      <button onClick={() => fetchReplies(comment.id)}>
+                        see replies
+                      </button>
+
+                      {commentReplies
+                        .filter((reply) => reply.commentId == comment.id)
+                        .map((reply) => (
+                          <div>
+                            <p>{reply.content}</p>
+                          </div>
+                        ))}
+                    </div>
                   ))}
+
+                  <br />
 
                   <div className="comment-input-container">
                     <div className="comment-avatar"></div>
